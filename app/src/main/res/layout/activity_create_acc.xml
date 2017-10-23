@@ -16,18 +16,21 @@
 
     <EditText
         android:id="@+id/etxtPwd"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Please type your Password" />
 
     <EditText
         android:id="@+id/etxtConfirmPwd"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Please confirm your password" />
 
     <EditText
         android:id="@+id/etxtBalance"
+        android:inputType="numberSigned"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Please type your balance" />
