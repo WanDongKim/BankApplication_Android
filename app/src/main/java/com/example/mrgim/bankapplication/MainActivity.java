@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Admin mode");
                 final View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_admin, null, false);
-                builder.setView(R.layout.dialog_admin);
+                builder.setView(dialogView);
                 builder.setPositiveButton("Log-in", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -60,6 +60,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         if("admin".equals(id) && "admin".equals(pwd)){
                             // TODO: 2017-10-23  move to admin
+                            Intent adminIntent = new Intent(MainActivity.this,AdminActivity.class);
+                           adminIntent.putExtra("data",mAccRepo.getmAccountMap());
+                            startActivity(adminIntent);
                         }else{
                             Toast.makeText(MainActivity.this,"Please type admin account. Incorrect value",Toast.LENGTH_SHORT).show();
                         }
