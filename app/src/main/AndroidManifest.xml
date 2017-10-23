@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateAccActivity" />
-        <activity android:name=".SearchAccountActivity"></activity>
+        <activity android:name=".SearchAccountActivity" />
+        <activity android:name=".AdminActivity"></activity>
     </application>
 
 </manifest>
