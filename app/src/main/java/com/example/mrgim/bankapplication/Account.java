@@ -1,10 +1,12 @@
 package com.example.mrgim.bankapplication;
 
+import java.io.Serializable;
+
 /**
  * Created by mrgim on 2017-10-23.
  */
 
-public class Account {
+public class Account implements Serializable{
     private String id;
     private String pwd;
     private String balance;

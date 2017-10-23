@@ -5,8 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private accRepo mAccRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnSearchAcc = (Button) findViewById(R.id.btnSearchAccount);
         Button btnAdmin = (Button) findViewById(R.id.btnAdminMode);
         Button btnExit = (Button) findViewById(R.id.btnExit);
+
+        mAccRepo = accRepo.getInstance();
 
         btnCreateAcc.setOnClickListener(this);
         btnSearchAcc.setOnClickListener(this);
@@ -31,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.btnCreateAccount:
                 Intent intent = new Intent(this, CreateAccActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1000);
                 break;
             case R.id.btnSearchAccount:
                 break;
@@ -39,6 +44,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnExit:
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1000) {
+            if (resultCode == RESULT_OK) {
+                if (data != null) {
+                    Account account = (Account) data.getSerializableExtra("account");
+                    mAccRepo.getmAccountMap().put(account.getId(), account);
+                    Toast.makeText(MainActivity.this, "Created account",Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 }
