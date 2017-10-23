@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context="com.example.mrgim.bankapplication.SearchAccountActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/etxtID"
+        android:hint="ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/etxtPwd"
+        android:hint="Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btnLogin"
+        android:text="Log in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:text="Your infomation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/txtResult"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="Close"
+        android:id="@+id/btnClose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

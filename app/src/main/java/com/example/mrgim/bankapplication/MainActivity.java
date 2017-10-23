@@ -1,6 +1,8 @@
 package com.example.mrgim.bankapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,12 +37,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnCreateAccount:
-                Intent intent = new Intent(this, CreateAccActivity.class);
-                startActivityForResult(intent, 1000);
+                Intent createAccIntent = new Intent(this, CreateAccActivity.class);
+                startActivityForResult(createAccIntent, 1000);
                 break;
             case R.id.btnSearchAccount:
+                Intent searchAccIntent = new Intent(this, SearchAccountActivity.class);
+                searchAccIntent.putExtra("data",mAccRepo.getmAccountMap());
+                startActivity(searchAccIntent);
                 break;
             case R.id.btnAdminMode:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Admin mode");
+                builder.setView(R.layout.dialog_admin);
+                builder.setPositiveButton("Log-in", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.setNegativeButton("Close",null);
+                builder.show();
                 break;
             case R.id.btnExit:
                 break;
